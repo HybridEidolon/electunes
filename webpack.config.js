@@ -22,11 +22,12 @@ const loaders = [
 
 module.exports = {
     entry: [
-        'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
+        `webpack-dev-server/client?http://${HOST}:${PORT}`,
+        'webpack/hot/only-dev-server',
         './src/index'
     ],
-    devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
+    devtool: 'inline-source-map',
     output: {
         publicPath: '/',
         path: path.join(__dirname, 'public'),
@@ -40,16 +41,15 @@ module.exports = {
     },
     devServer: {
         contentBase: './public',
-        noInfo: true,
         hot: true,
-        inline: true,
         historyApiFallback: true,
         port: PORT,
         host: HOST
     },
     plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new DashboardPlugin(),
         new HtmlWebpackPlugin({
             template: './src/template.html',
