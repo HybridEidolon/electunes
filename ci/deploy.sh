@@ -10,5 +10,5 @@ ssh-add deploy_key
 
 git config --global user.name "Travis CI"
 git config --global user.email "travis@travis-ci.org"
-yarn run deploy
+yarn run deploy -- --repo git@github.com:HybridEidolon/electunes.git
 rm deploy_key
