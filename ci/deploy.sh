@@ -8,7 +8,7 @@ chmod 600 deploy_key
 eval `ssh-agent -s`
 ssh-add deploy_key
 
-git config user.name "Travis CI"
-git config user.email "travis@travis-ci.org"
+git config --global user.name "Travis CI"
+git config --global user.email "travis@travis-ci.org"
 yarn run deploy
 rm deploy_key
