@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+require('@blueprintjs/core');
+
+import { Header, Editor, Footer }  from './components';
+
 import './App.css';
 
-import Sub from './Sub';
-
 class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
-                </div>
-                <Sub text={'hello world ????dasdasd'} />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="pt-app pt-dark app">
+        <Header />
+        <Editor />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

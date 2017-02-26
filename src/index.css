@@ -1,5 +1,13 @@
-body {
+@import "~@blueprintjs/core/dist/blueprint.css";
+
+html, body, div#root {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
 }
+
+body {
+  background-color: #293742;
+}
+
