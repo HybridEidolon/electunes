@@ -1,9 +1,11 @@
 import React from 'react';
 import './Editor.css';
 
+import Tracker from './Tracker';
+
 const Editor = () => (
   <div className="editor">
-    <div style={{flex: 1}}>hi</div>
+    <Tracker numColumns={5} />
   </div>
 );
 
