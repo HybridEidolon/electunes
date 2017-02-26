@@ -11,3 +11,4 @@ ssh-add deploy_key
 git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 yarn run deploy
+rm deploy_key
