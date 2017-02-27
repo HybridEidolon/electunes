@@ -1,43 +1,25 @@
 import React from 'react';
-import Panel from '../common/Panel';
+import '../../flex.css';
+import Node from './Node';
+import AddNodeForm from './AddNodeForm';
 
-
-const InstrumentEditor = () => (
-  <Panel style={{flex: '1'}}>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-    <p>skdlfjlsdjf</p>
-  </Panel>
+const InstrumentEditor = ({nodes}) => (
+  <div>
+    <AddNodeForm />
+    {
+      nodes.map((n) => (
+        <Node key={n.id} node={n} />
+      ))
+    }
+  </div>
 );
+
+InstrumentEditor.propTypes = {
+  nodes: React.PropTypes.array
+};
+
+InstrumentEditor.defaultProps = {
+  nodes: []
+};
 
 export default InstrumentEditor;
