@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import '../../flex.css';
 import Node from './Node';
 import AddNodeForm from './AddNodeForm';
@@ -22,4 +23,10 @@ InstrumentEditor.defaultProps = {
   nodes: []
 };
 
-export default InstrumentEditor;
+const mapStateToProps = (state) => {
+  return {
+    nodes: state.editor.instrument.nodes
+  }
+};
+
+export default connect(mapStateToProps)(InstrumentEditor);
