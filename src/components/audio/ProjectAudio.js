@@ -11,6 +11,11 @@ class NNN extends Component {
     this.osc.start();
   }
 
+  componentWillUnmount() {
+    this.osc.stop();
+    this.osc = null;
+  }
+
   static contextTypes = {
     audioContext: PropTypes.object
   }
