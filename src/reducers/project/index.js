@@ -1,5 +1,3 @@
-import uuid from 'uuid';
-
 import {combineReducers} from 'redux';
 import {handleActions} from 'redux-actions';
 import {
@@ -7,17 +5,17 @@ import {
 } from '../../actions';
 
 const nodes = handleActions({
-  [createOscillatorNode]: (state, _) => {
+  [createOscillatorNode]: (state, action) => {
     return state.concat({
-      id: uuid(),
-      type: 'oscillator',
-      props: {}
+      id: action.payload.uuid,
+      type: 'oscillator'
     });
   }
 }, []);
 
-const instrument = combineReducers({
+
+const project = combineReducers({
   nodes
 });
 
-export default instrument
+export default project;

@@ -5,7 +5,7 @@ import {
   openTrackerEditor
 } from '../actions';
 
-import editor from './editor';
+import project from './project';
 
 const currentEditor = handleActions({
   [openInstrumentEditor]: (state, _) => ('instrument'),
@@ -14,7 +14,7 @@ const currentEditor = handleActions({
 
 const app = combineReducers({
   currentEditor,
-  editor
+  project
 });
 
 export default app;

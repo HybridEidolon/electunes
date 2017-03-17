@@ -25,8 +25,8 @@ InstrumentEditor.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    nodes: state.editor.instrument.nodes
-  }
+    nodes: state.project.nodes
+  };
 };
 
 export default connect(mapStateToProps)(InstrumentEditor);
