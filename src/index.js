@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import { createStore, compose } from 'redux';
-import { Provider } from 'react-redux';
+import { createStore, compose, } from 'redux';
+import { Provider, } from 'react-redux';
 import reducer from './reducers';
 import 'rxjs';
 
@@ -12,7 +12,6 @@ import './index.css';
 const wrapCompose =
   (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
   || compose;
-
 
 const enhancer = wrapCompose(
 );

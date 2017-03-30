@@ -10,7 +10,7 @@ function plugins(env) {
       template: 'public/index.html',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': env.production ? '"production"' : '"development"'
+      'process.env.NODE_ENV': env.production ? '"production"' : '"development"',
     }),
   ];
   if (env.production) {
@@ -28,7 +28,7 @@ function plugins(env) {
         output: {
           comments: false,
           screw_ie8: true,
-        }
+        },
       }),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -36,7 +36,7 @@ function plugins(env) {
     ]);
   } else {
     plugins = plugins.concat([
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin(),
     ]);
   }
   return plugins;
@@ -45,15 +45,21 @@ function plugins(env) {
 module.exports = function(env) {
   return {
     entry: {
-      main: './src/index.js'
+      main: './src/index.js',
     },
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.json',],
     },
     devtool: env.production ? 'source-map' : 'eval',
     watch: env.production ? false : true,
     module: {
       rules: [
+        {
+          enforce: 'pre',
+          test: /\.jsx?$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/,
+        },
         {
           exclude: [
             /\.jsx?$/,
@@ -68,18 +74,29 @@ module.exports = function(env) {
         },
         {
           test: /\.jsx?$/,
-          loader: 'babel-loader!eslint-loader',
+          loader: 'babel-loader',
+          query: {
+            cacheDirectory: true,
+          },
         },
         {
           test: /\.css$/,
-          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true'}) : 'style-loader!css-loader?importLoaders=true',
+          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true',}) : 'style-loader!css-loader?importLoaders=true',
         },
       ],
     },
     output: {
       path: path.resolve(__dirname, 'build'),
       pathinfo: !env.production,
-      filename: '[name]-[hash:8].js'
+      filename: '[name]-[hash:8].js',
+    },
+    profile: true,
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'redux': 'Redux',
+      'react-redux': 'ReactRedux',
+      '@blueprintjs/core': 'Core',
     },
     plugins: plugins(env),
     bail: env.production ? true : false,

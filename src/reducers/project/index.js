@@ -1,21 +1,21 @@
-import {combineReducers} from 'redux';
-import {handleActions} from 'redux-actions';
+import {combineReducers,} from 'redux';
+import {handleActions,} from 'redux-actions';
 import {
-  createOscillatorNode
+  createOscillatorNode,
 } from '../../actions';
 
 const nodes = handleActions({
   [createOscillatorNode]: (state, action) => {
     return state.concat({
       id: action.payload.uuid,
-      type: 'oscillator'
+      type: 'oscillator',
     });
-  }
+  },
 }, []);
 
 
 const project = combineReducers({
-  nodes
+  nodes,
 });
 
 export default project;

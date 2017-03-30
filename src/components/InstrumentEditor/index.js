@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect,} from 'react-redux';
 import '../../flex.css';
 import Node from './Node';
 import AddNodeForm from './AddNodeForm';
 
-const InstrumentEditor = ({nodes}) => (
+const InstrumentEditor = ({nodes,}) => (
   <div>
     <AddNodeForm />
     {
@@ -16,16 +16,16 @@ const InstrumentEditor = ({nodes}) => (
 );
 
 InstrumentEditor.propTypes = {
-  nodes: React.PropTypes.array
+  nodes: React.PropTypes.array,
 };
 
 InstrumentEditor.defaultProps = {
-  nodes: []
+  nodes: [],
 };
 
 const mapStateToProps = (state) => {
   return {
-    nodes: state.project.nodes
+    nodes: state.project.nodes,
   };
 };
 

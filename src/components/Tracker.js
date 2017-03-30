@@ -2,10 +2,10 @@ import React from 'react';
 
 import TrackerColumn from './TrackerColumn';
 
-const Tracker = ({numColumns}) => (
-  <div style={{display: 'flex', flexDirection: 'row', flex: '1'}}>
+const Tracker = ({numColumns,}) => (
+  <div style={{display: 'flex', flexDirection: 'row', flex: '1',}}>
     {
-      [...Array(numColumns)].map((x, i) => (
+      [...Array(numColumns),].map((x, i) => (
           <TrackerColumn key={i} col={i} />
         )
       )
@@ -14,11 +14,11 @@ const Tracker = ({numColumns}) => (
 );
 
 Tracker.propTypes = {
-  numColumns: React.PropTypes.number
+  numColumns: React.PropTypes.number,
 };
 
 Tracker.defaultProps = {
-  numColumns: 4
+  numColumns: 4,
 };
 
 export default Tracker;

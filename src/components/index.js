@@ -5,5 +5,5 @@ import Footer from './Footer';
 export {
   Header,
   Editor,
-  Footer
+  Footer,
 };

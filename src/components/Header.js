@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, } from 'react';
 import './Header.css';
 
-const Header = ({appName}) => (
+const Header = ({appName,}) => (
   <header className="pt-navbar header">
     <div className="pt-navbar-group pt-align-left">
       <div className="pt-navbar-heading">{appName} <small>by eidolon</small></div>
@@ -13,11 +13,11 @@ const Header = ({appName}) => (
 );
 
 Header.propTypes = {
-  appName: PropTypes.string
+  appName: PropTypes.string,
 };
 
 Header.defaultProps = {
-  appName: 'Electunes'
-}
+  appName: 'Electunes',
+};
 
 export default Header;

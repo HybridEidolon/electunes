@@ -17,8 +17,15 @@
     "react"
   ],
   "rules": {
-    "semi": "warn",
-    "react/prop-types": "warn"
+    "semi": "error",
+    "react/prop-types": "warn",
+    "comma-dangle": ["warn", {
+        "arrays": "always",
+        "objects": "always",
+        "imports": "always",
+        "exports": "always",
+        "functions": "ignore"
+      }]
   },
   "ignore": [
     "build",

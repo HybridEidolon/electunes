@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Node = ({node}) => (
+const Node = ({node,}) => (
   <div>
     <p>{node.id}</p>
     <p>Type: {node.type}</p>

@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect,} from 'react-redux';
 import './Editor.css';
-import {Tabs, TabList, Tab, TabPanel} from '@blueprintjs/core';
-import {openTrackerEditor, openInstrumentEditor} from '../actions';
+import {Tabs, TabList, Tab, TabPanel,} from '@blueprintjs/core';
+import {openTrackerEditor, openInstrumentEditor,} from '../actions';
 
 import Tracker from './Tracker';
 import InstrumentEditor from './InstrumentEditor';
 
-const Editor = ({selectedTab, onChange}) => (
+const Editor = ({selectedTab, onChange,}) => (
   <div className="editor">
     <Tabs selectedTabIndex={selectedTab} onChange={onChange} className="tune-editor-tabs">
       <TabList>
@@ -34,9 +34,9 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    selectedTab
-  }
-}
+    selectedTab,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -46,8 +46,8 @@ const mapDispatchToProps = (dispatch) => {
         case 1: dispatch(openInstrumentEditor()); break;
         default: break;
       }
-    }
-  }
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

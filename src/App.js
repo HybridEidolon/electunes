@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 require('@blueprintjs/core');
 
-import { Header, Editor, Footer }  from './components';
+import { Header, Editor, Footer, }  from './components';
 
 import './App.css';
 

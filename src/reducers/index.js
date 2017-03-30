@@ -1,20 +1,20 @@
-import {combineReducers} from 'redux';
-import {handleActions} from 'redux-actions';
+import {combineReducers,} from 'redux';
+import {handleActions,} from 'redux-actions';
 import {
   openInstrumentEditor,
-  openTrackerEditor
+  openTrackerEditor,
 } from '../actions';
 
 import project from './project';
 
 const currentEditor = handleActions({
   [openInstrumentEditor]: () => ('instrument'),
-  [openTrackerEditor]: () => ('tracker')
+  [openTrackerEditor]: () => ('tracker'),
 }, 'instrument');
 
 export const app = combineReducers({
   currentEditor,
-  project
+  project,
 });
 
 export default app;
