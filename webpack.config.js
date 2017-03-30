@@ -90,14 +90,6 @@ module.exports = function(env) {
       pathinfo: !env.production,
       filename: '[name]-[hash:8].js',
     },
-    profile: true,
-    externals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM',
-      'redux': 'Redux',
-      'react-redux': 'ReactRedux',
-      '@blueprintjs/core': 'Core',
-    },
     plugins: plugins(env),
     bail: env.production ? true : false,
   };
