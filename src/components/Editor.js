@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (tabIndex, prevTab) => {
+    onChange: (tabIndex) => {
       switch (tabIndex) {
         case 0: dispatch(openTrackerEditor()); break;
         case 1: dispatch(openInstrumentEditor()); break;

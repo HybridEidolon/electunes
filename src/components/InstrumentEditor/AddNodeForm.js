@@ -17,7 +17,7 @@ const AddNodeForm = ({clickMakeOsc}) => (
   </div>
 );
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
   };
 };

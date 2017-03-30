@@ -8,7 +8,11 @@ const Panel = ({children, style}) => (
 );
 
 Panel.propTypes = {
-  style: React.PropTypes.object
+  style: React.PropTypes.object,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.arrayOf(React.PropTypes.node),
+    React.PropTypes.node
+  ])
 };
 
 export default Panel;
