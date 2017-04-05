@@ -87,6 +87,7 @@ module.exports = function(env) {
           exclude: [
             /\.jsx?$/,
             /\.css$/,
+            /\.less$/,
             /\.html$/,
           ],
           loader: 'url-loader',
@@ -102,6 +103,10 @@ module.exports = function(env) {
         {
           test: /\.css$/,
           loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true',}) : 'style-loader!css-loader?importLoaders=true',
+        },
+        {
+          test: /\.less$/,
+          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true!less-loader',}) : 'style-loader!css-loader?importLoaders=true!less-loader',
         },
       ],
     },
