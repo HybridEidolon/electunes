@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function plugins(env) {
+  if (typeof env.production === 'undefined') {
+    env.production = process.env.NODE_ENV === 'production';
+  }
+
   let plugins = [
     new HtmlWebpackPlugin({
       inject: true,
@@ -11,6 +15,9 @@ function plugins(env) {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': env.production ? '"production"' : '"development"',
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
     }),
   ];
   if (env.production) {
@@ -30,13 +37,15 @@ function plugins(env) {
           screw_ie8: true,
         },
       }),
+      new webpack.NoEmitOnErrorsPlugin(),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
       }),
     ]);
   } else {
     plugins = plugins.concat([
-      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NamedModulesPlugin(),
     ]);
   }
   return plugins;
@@ -45,12 +54,26 @@ function plugins(env) {
 module.exports = function(env) {
   return {
     entry: {
-      main: './src/index.js',
+      vendor: [
+        'react',
+        'react-dom',
+        'redux',
+        'react-redux',
+        'rxjs',
+        '@blueprintjs/core',
+        'lodash',
+      ],
+      main: [
+        './src/index.js',
+      ],
     },
     resolve: {
       extensions: ['.js', '.json',],
     },
     devtool: env.production ? 'source-map' : 'eval',
+    devServer: env.production ? {} : {
+      hot: true,
+    },
     watch: env.production ? false : true,
     module: {
       rules: [
@@ -74,10 +97,7 @@ module.exports = function(env) {
         },
         {
           test: /\.jsx?$/,
-          loader: 'babel-loader',
-          query: {
-            cacheDirectory: true,
-          },
+          loader: 'babel-loader?cacheDirectory=true',
         },
         {
           test: /\.css$/,

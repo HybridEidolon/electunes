@@ -17,6 +17,7 @@
     "react"
   ],
   "rules": {
+    "no-console": "warn",
     "semi": "error",
     "react/prop-types": "warn",
     "comma-dangle": ["warn", {
