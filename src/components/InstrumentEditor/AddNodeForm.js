@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes,} from 'react';
 import { connect, } from 'react-redux';
 import { Menu, MenuItem, Popover, Position, } from '@blueprintjs/core';
 import { createOscillatorNode, } from '../../actions';
@@ -9,6 +9,10 @@ const menu = ({clickMakeOsc,}) => (
   </Menu>
 );
 
+menu.propTypes = {
+  clickMakeOsc: PropTypes.func,
+};
+
 const AddNodeForm = ({clickMakeOsc,}) => (
   <div>
     <Popover content={menu({clickMakeOsc,})} position={Position.RIGHT_BOTTOM}>
@@ -16,6 +20,10 @@ const AddNodeForm = ({clickMakeOsc,}) => (
     </Popover>
   </div>
 );
+
+AddNodeForm.propTypes = {
+  clickMakeOsc: PropTypes.func,
+};
 
 const mapStateToProps = () => {
   return {
