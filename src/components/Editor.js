@@ -1,13 +1,13 @@
-import React, {PropTypes,} from 'react';
-import {connect,} from 'react-redux';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 import './Editor.css';
-import {Tabs2, Tab2,} from '@blueprintjs/core';
-import {openTrackerEditor, openInstrumentEditor,} from '../actions';
+import {Tabs2, Tab2} from '@blueprintjs/core';
+import {openTrackerEditor, openInstrumentEditor} from '../actions';
 
 import Tracker from './Tracker';
 import InstrumentEditor from './InstrumentEditor';
 
-const Editor = ({selectedTab, onChange,}) => (
+const Editor = ({selectedTab, onChange}) => (
   <div className="editor">
     <Tabs2 selectedTabId={selectedTab} onChange={onChange} className="tune-editor-tabs">
       <Tab2 id="tracker" title="Tracker" panel={<Tracker columns={4}/>} />

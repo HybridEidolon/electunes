@@ -1,7 +1,8 @@
-import {combineReducers,} from 'redux';
-import {handleActions,} from 'redux-actions';
+import {combineReducers} from 'redux';
+import {handleActions} from 'redux-actions';
 import {
   createOscillatorNode,
+  deleteNode,
 } from '../../actions';
 
 const nodes = handleActions({
@@ -10,6 +11,9 @@ const nodes = handleActions({
       id: action.payload.uuid,
       type: 'oscillator',
     });
+  },
+  [deleteNode]: (state, action) => {
+    return state.filter(v => v.id !== action.payload.uuid);
   },
 }, []);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Panel.css';
 
-const Panel = ({children, style,}) => (
+const Panel = ({children, style}) => (
   <div className="tune-panel" style={style}>
     {children}
   </div>

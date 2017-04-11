@@ -64,15 +64,16 @@ module.exports = function(env) {
         'lodash',
       ],
       main: [
+        ...(env.production ? [] : []),
         './src/index.js',
       ],
     },
     resolve: {
-      extensions: ['.js', '.json',],
+      extensions: ['.js', '.json'],
     },
     devtool: env.production ? 'source-map' : 'eval',
     devServer: env.production ? {} : {
-      hot: true,
+      hot: false,
     },
     watch: env.production ? false : true,
     module: {
@@ -102,11 +103,11 @@ module.exports = function(env) {
         },
         {
           test: /\.css$/,
-          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true',}) : 'style-loader!css-loader?importLoaders=true',
+          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true'}) : 'style-loader!css-loader?importLoaders=true',
         },
         {
           test: /\.less$/,
-          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true!less-loader',}) : 'style-loader!css-loader?importLoaders=true!less-loader',
+          loader: env.production ? ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?importLoaders=true!less-loader'}) : 'style-loader!css-loader?importLoaders=true!less-loader',
         },
       ],
     },
